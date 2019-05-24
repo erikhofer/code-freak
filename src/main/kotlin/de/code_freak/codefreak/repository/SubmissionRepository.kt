@@ -8,5 +8,10 @@ import java.util.UUID
 
 @Repository
 interface SubmissionRepository : CrudRepository<Submission, UUID> {
+  /**
+   * Get a list of submissions for a specific assignment
+   */
+  fun findByAssignmentId(assignmentId: UUID): List<Submission>
+
   fun findByAssignmentIdAndDemoUserId(assignmentId: UUID, demoUserId: UUID): Optional<Submission>
 }
