@@ -26,7 +26,7 @@
 }
 
 \title{[( ${submission.assignment.title} )]}
-\author{Add author here}
+\author{Group [( ${submission.demoUser.group} )]\\\texttt{[( ${submission.demoUser.email} )]}}
 
 \begin{document}
 	\maketitle
@@ -44,7 +44,7 @@
         \end{tabularx}
         \end{table}
         \begin{lstlisting}[# th:if="${file.syntax}" )][language=[( ${file.syntax} )]][/]
-    [( ${file.content} )]
+[( ${file.content} )]
         \end{lstlisting}
         [# th:if="${last}"]
         \pagebreak
