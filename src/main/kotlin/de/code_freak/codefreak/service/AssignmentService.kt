@@ -28,6 +28,9 @@ class AssignmentService {
   lateinit var answerRepository: AnswerRepository
 
   @Autowired
+  lateinit var latexService: LatexService
+
+  @Autowired
   lateinit var demoUserRepository: DemoUserRepository
 
   @Transactional
@@ -78,6 +81,9 @@ class AssignmentService {
       // write a meta-file with information about user
       val metaFile = File(submissionDir, "freak.json")
       metaFile.writeText(Klaxon().toJsonString(it.demoUser))
+      // write pdf with submission
+      val pdfFile = File(submissionDir, "submission.pdf")
+      pdfFile.writeBytes(latexService.submissionToPdf(it))
     }
 
     val archive = TarUtil.createTarFromDirectory(tmpDir)
