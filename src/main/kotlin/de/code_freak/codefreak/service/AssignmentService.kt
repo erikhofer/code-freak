@@ -70,7 +70,7 @@ class AssignmentService {
       val submissionDir = File(tmpDir, it.id.toString())
       submissionDir.mkdirs()
       it.answers.forEach {
-        val answerDir = File(submissionDir, it.id.toString())
+        val answerDir = File(submissionDir, "task-${it.task.number}")
         val files = it.files
         if (files != null) {
           TarUtil.extractTarToDirectory(files, answerDir)
