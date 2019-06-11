@@ -3,12 +3,13 @@ package de.code_freak.codefreak.service
 import com.nhaarman.mockitokotlin2.anyOrNull
 import de.code_freak.codefreak.entity.Answer
 import de.code_freak.codefreak.entity.Assignment
+import de.code_freak.codefreak.entity.DemoUser
 import de.code_freak.codefreak.entity.Submission
 import de.code_freak.codefreak.entity.Task
 import de.code_freak.codefreak.entity.User
+import de.code_freak.codefreak.repository.AnswerRepository
 import de.code_freak.codefreak.repository.AssignmentRepository
 import de.code_freak.codefreak.repository.SubmissionRepository
-import de.code_freak.codefreak.repository.AnswerRepository
 import de.code_freak.codefreak.util.TarUtil
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
@@ -32,7 +33,7 @@ class AssignmentServiceTest {
   val files = TarUtil.createTarFromDirectory(ClassPathResource("util/tar-sample").file)
   val assignment = Assignment("Assignment 1", User(), null)
   val task = Task(assignment, position = 0L, title = "Task 1", body = "Do stuff", files = files, weight = 100)
-  val submission = Submission(null, assignment)
+  val submission = Submission(DemoUser("a@b.io", "1"), assignment)
   val answer = Answer(submission, task, files)
 
   init {
