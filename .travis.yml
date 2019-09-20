@@ -28,7 +28,7 @@ before_install:
 
 # Run gradle checks and try to build the Docker image as latest
 script:
-  - ./graldew check
+  - ./gradlew check
 #  - ./gradlew check sonarqube
 #  - docker build
 #    --build-arg GITHUB_TOKEN
